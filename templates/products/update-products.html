@@ -1,0 +1,27 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block content %}
+    <div class="row d-flex col-4 m-auto">
+        <form action="/products/update-products/{{ product.id }}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <legend class="border-bottom  mb-4">
+                    update products
+                </legend>
+                <input type="text" value="{{ product.name }}" name="name" placeholder="name" class="form-control"><br>
+                <input type="text" value="{{ product.qtty }}" name="qtty" placeholder="quantity" class="form-control"><br>
+                <input type="text" value="{{ product.price }}" name="price" placeholder="price" class="form-control"><br>
+                <input type="text" value="{{ product.desc }}" name="desc" placeholder="description" class="form-control"><br>
+                <label> product image</label><br>
+                <img src="{% static '../' %}{{ product.image }}" alt="categories" class="product-image img-fluid">
+                <input type="file"  name="image" class="form-control mt-1"><br>
+
+
+            </fieldset>
+            <div class="form-group">
+                <input type="submit" class="btn btn-info mt-4" value="Update">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
